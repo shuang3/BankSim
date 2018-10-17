@@ -32,7 +32,7 @@ public class Bank {
         if (shouldTest()) test();
     }
 
-    public void test() {
+    public synchronized void test() {
         int sum = 0;
         for (Account account : accounts) {
             System.out.printf("%s %s%n", 
