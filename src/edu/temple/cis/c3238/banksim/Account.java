@@ -17,8 +17,17 @@ public class Account {
         balance = initialBalance;
     }
 
-    public synchronized int getBalance() {
+    public int getBalance() {
         return balance;
+    }
+
+    public synchronized void waitForAvailableFunds(int amount) {
+        while (myBank.isOpen() && amount >= balance) {
+            try {
+                wait();
+            } catch (InterruptedException exception) {
+            }
+        }
     }
 
     public synchronized boolean withdraw(int amount) {
@@ -38,8 +47,9 @@ public class Account {
 //        Thread.yield();   // Try to force collision
         int newBalance = currentBalance + amount;
         balance = newBalance;
+        notifyAll();
     }
-    
+
     @Override
     public String toString() {
         return String.format("Account[%d] balance %d", id, balance);
