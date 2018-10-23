@@ -55,7 +55,7 @@ public class Bank {
                     Thread.currentThread().toString(), account.toString());
             sum += account.getBalance();
         }
-    
+
         System.out.println(Thread.currentThread().toString()
                 + " Sum: " + sum);
         if (sum != numAccounts * initialBalance) {
@@ -67,8 +67,8 @@ public class Bank {
                     + " The bank is in balance");
             System.out.println("Total transactions: " + ntransacts);
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            notifyAll();
         }
+        notifyAll();
     }
 
     public int size() {
@@ -83,7 +83,7 @@ public class Bank {
         return open;
     }
 
-    public void close() {
+    public void closeBank() {
         synchronized (this) {
             open = false;
         }

@@ -27,6 +27,6 @@ class TransferThread extends Thread {
 
             //System.out.println("\t From Account[" + fromAccount + "] To Account[" + toAccount + "], the amount transferred is: " + amount);
         }
-        bank.close();
+        bank.closeBank();
     }
 }
