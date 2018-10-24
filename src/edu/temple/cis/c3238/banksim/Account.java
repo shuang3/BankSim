@@ -20,8 +20,7 @@ public class Account {
     public int getBalance() {
         return balance;
     }
-
-    /*
+    
     public synchronized void waitForAvailableFunds(int amount) {
         while (myBank.isOpen() && amount >= balance) {
             try {
@@ -30,7 +29,6 @@ public class Account {
             }
         }
     }
-    */
 
     public synchronized boolean withdraw(int amount) {
         if (amount <= balance) {
